@@ -6,11 +6,12 @@ class CustomButton extends StatelessWidget {
       {super.key,
       required this.text,
       required this.backgroundColor,
-      required this.textColor,required this.onPressed});
+      required this.textColor,
+      required this.onPressed});
   final String text;
   final Color backgroundColor;
   final Color textColor;
-  final void Function () onPressed;
+  final void Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +23,7 @@ class CustomButton extends StatelessWidget {
               fixedSize: const Size(316, 58),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10))),
-          onPressed: () {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const AddDriver(),
-                ));
-          },
+          onPressed: onPressed,
           child: Text(
             text.toString(),
             style: TextStyle(
