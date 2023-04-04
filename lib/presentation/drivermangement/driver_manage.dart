@@ -1,34 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:pra/presentation/commonwidgets/appbar.dart';
 import 'package:pra/presentation/commonwidgets/cardwidget.dart';
-import 'package:pra/presentation/homepage/widget/seatwidget.dart';
+import 'package:pra/presentation/driverlist/driver_list.dart';
 
-class MyHomePage extends StatelessWidget {
+import '../busmange/widget/seatwidget.dart';
+
+class DriverManage extends StatelessWidget {
+  const DriverManage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        toolbarHeight: 120,
-        backgroundColor: Color(0xFFF2B2B2B),
-        title: Text(
-          'KSRTC Swift Scania P-​series',
-          style: TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-              fontFamily: 'Axiforma',
-              letterSpacing: 1,
-              fontWeight: FontWeight.w500),
-        ),
-        centerTitle: true,
-        leading: IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.arrow_back),
-            color: Colors.white),
+      appBar: const CustomAppbar(
+        text: 'KSRTC Swift Scania P-​series',
+        height: 120,
       ),
       body: Column(
-        children: const [
-        DriverCard(),
-          SeatView()
+        children: [
+          GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const DriverList(),
+                    ));
+              },
+              child: const DriverCard()),
+          const SeatView(),
         ],
       ),
     );
@@ -50,10 +48,6 @@ class SeatView extends StatelessWidget {
             margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 50),
             child: Row(
               children: [
-                HollowCube(
-                  padding: 1,
-                  size: 40,
-                ),
                 const SizedBox(
                   width: 10,
                 ),
@@ -69,7 +63,14 @@ class SeatView extends StatelessWidget {
                   size: 40,
                 ),
                 const SizedBox(
-                  width: 10,
+                  width: 15,
+                ),
+                HollowCube(
+                  padding: 1,
+                  size: 40,
+                ),
+                const SizedBox(
+                  width: 15,
                 ),
                 HollowCube(
                   padding: 1,
@@ -77,10 +78,6 @@ class SeatView extends StatelessWidget {
                 ),
                 const SizedBox(
                   width: 10,
-                ),
-                HollowCube(
-                  padding: 1,
-                  size: 40,
                 ),
               ],
             ),
